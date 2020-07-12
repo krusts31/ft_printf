@@ -1,121 +1,91 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include "ft_printf.h"
 
-size_t  ft_strlen(const char *s) 
+/*
+ *
+ *
+ * Got to make the va_list to work
+ * I think I got it 16.06 moving to makinf a struct and making the struct work with the code
+ * using a struct because it an easy way to keep track of some of the varibles used by printf_f like the length
+ * It compails and the previus functionalit is still working with a struct
+ * ??? whts the difference between using -> and . opertator when accsesing varibles from a struct ???
+ * prints out the cahrs which are not asociated with %
+ * After that make a Makefile
+ * Clean up and make it work with libft
+ *? Ask how do it?
+ *
+ */
+//dspciuxX
+t_function g_var[9] = {
+	{'d', &ft_do_int},
+	{'c', &ft_do_char},
+	{'s', &ft_do_str},
+	{'p', &ft_do_ptr},
+	{'i', &ft_do_int},
+	{'u', &ft_do_uni},
+	{'x', &ft_do_hex},
+	{'X', &ft_do_helx},
+	{'\0', NULL}
+};
+
+int	ft_pad_amount(char	*conversion_specifier)
 {
-        size_t  retu;
+	int x;
+	int	pad_amount;
 
-        retu = 0;
-        while (*s != '\0')
-        {
-                retu++;
-                s++;
-        }
-        return (retu);
+	x = 0;
+	while (ft_isdigit(conversion_specifier[x]))
+	{
+		pad_amount = pad_amount * 10 + ft_atoi((const char *)conversion_specifier[x]);
+		x++;
+	}
+	return (0);
 }
 
-char    *ft_strdup(const char *s) 
+int	ft_do_int(char	*conversion_specifier, va_list	*va, t_print *print)
 {
-        char    *ptr;
-        size_t  x;  
-        size_t  y;  
+	int	t;
+	int	d;
 
-        y = 0;
-        x = ft_strlen(s);
-        ptr = malloc(x + 1); 
-        if (ptr == NULL)
-                return (NULL);
-        while (s[y])
-        {
-                ptr[y] = s[y];
-                y++;
-        }
-        ptr[y] = '\0';
-        return (ptr);
+	d = va_arg(*va, int);
+	printf("this is d for function ft_do_int: %d\n", d);
+	t = 0;
+	while (conversion_specifier[t] != '\0')
+	{
+		if (conversion_specifier[t] == '-')
+			print->print_lr = 1;
+		if (conversion_specifier[t] == '0')
+			print->zero_present = 1;
+		if (conversion_specifier[t] == '.')
+			print->zero_present = 1;
+		if (conversion_specifier[t] == '*')
+			//* is used for dynamic input, for example if there is a string with more than 8 byts then only print 4 and to specifay 4 yu have to pass an argument before that
+		if (conversion_specifier[t] > 0 && conversion_specifier[t] <= 9)
+			print->pad_amount = ft_pad_amount(conversion_specifier + t);
+		t++;
+	}
+	return (1);
 }
 
-void    *ft_memset(void *s, int c, size_t n)
+int	find_my_purpuse(t_list1	*info, va_list *va, const char	*str)
 {
-        size_t  i;
+	int		i;
+	t_print *print;
 
-        i = 0;
-        while (n > i)
-        {
-                ((char *)s)[i] = (unsigned char)c;
-                i++;
-        }
-        return (s);
-}
-
-void    *ft_memcpy(void *dest, const void *src, size_t n)
-{
-        char    *d; 
-        char    *s; 
-
-        d = (char *)dest;
-        s = (char *)src;
-        while (n > 0)
-        {
-                if (d == NULL && s == NULL)
-                        return (NULL);
-                *d = *s; 
-                d++;
-                s++;
-                n--;
-        }
-        if (d == NULL && s == NULL)
-                return (NULL);
-        return ((void *)dest);
-}
-
-char    *ft_memrcpy(char *dest, const char *src, size_t x)
-{
-        while (x > 0)
-        {
-                *dest = *src;
-                dest--;
-                src--;
-                x--;
-        }
-        return (dest);
-}
-
-void    *ft_memmove(void *dest, const void *src, size_t n)
-{
-        int                     x;
-        char            *desa;
-        const char      *gala;
-
-        x = n - 1;
-        desa = dest;
-        gala = src;
-        if (dest < src)
-                ft_memcpy(dest, src, n); 
-        else if (dest > src)
-        {
-                while (x > 0)
-                {
-                        desa++;
-                        gala++;
-                        x--;
-                }
-                ft_memrcpy(desa, gala, n); 
-        }
-        else if (dest == NULL || src == NULL)
-                return (NULL);
-        return ((void *)dest);
-}
-
-void    *ft_calloc(size_t nmemb, size_t size)
-{
-        void    *ptr;
-
-        ptr = malloc(nmemb * size);
-        if (ptr == 0)
-                return (NULL);
-        ptr = ft_memset(ptr, 0, nmemb * size);
-        return (ptr);
+	print = ft_calloc(sizeof(t_print), 1);
+	if (print == NULL)
+		return (0);
+	while(str[info->length_of_cs_find] != '\0')
+	{
+		i = 0;
+		while (g_var[i].c != '\0')
+		{
+			if (g_var[i].c == str[info->length_of_cs_find])
+				g_var[i].f(info->conversion_specifier, va, print);
+			i++;
+		}
+		info->length_of_cs_find++;
+	}
+	return (0);
 }
 
 char	*ft_chop(const char	*s)
@@ -129,6 +99,8 @@ char	*ft_chop(const char	*s)
 		if (s[x] == 'c' || s[x] == 's' || s[x] == 'p'|| s[x] == 'd' || s[x] == 'i' || s[x] == 'u' || s[x] == 'x' || s[x] == 'X')
 		{
 			conversion_specifier = ft_calloc(x + 1, sizeof(char));
+			if (conversion_specifier == NULL)
+				return (NULL);
 			conversion_specifier = ft_memmove(conversion_specifier, s, x + 1);
 			return (conversion_specifier);
 		}
@@ -137,34 +109,58 @@ char	*ft_chop(const char	*s)
 	return (NULL);
 }
 
-char	*ft_find(const char	*s)
+char	*ft_find(const char	*s, t_list1 *info)
 {
-	char	*conversion_specifier;
-
 	if (s == NULL)
-		return (NULL);
-	while (*s != '\0')
+		return (0);
+	while (s[info->length_of_cs_string] != '\0')
 	{
-		if (*s == '%')
+		if (s[info->length_of_cs_string] == '%')
 		{
-			conversion_specifier = ft_chop(s);
-			printf("%s\n", conversion_specifier);
+			info->conversion_specifier = ft_chop(&s[info->length_of_cs_string]);
+			info->length_of_cs_string = info->length_of_cs_string + ft_strlen(info->conversion_specifier);
+			info->length_of_cs_string = info->length_of_cs_string;
+			return (info->conversion_specifier);
 		}
-		s++;
+		else
+		{
+			ft_putchar(s[info->length_of_cs_string]);
+			info->total_chars_printed = info->total_chars_printed + 1;
+			info->length_of_cs_string = info->length_of_cs_string + 1;
+		}
 	}
-	return (NULL);
+	return (info->conversion_specifier);
+}
+
+void	ft_how_many_cs(char	*snakes)
+{
+	(void)snakes;
 }
 
 int	ft_printf(const char *str, ...)
 {
-		ft_find(str);
-		printf("%s\n", "Done");
-	return (0);
+	t_list1 *info;
+	va_list	va;
+
+	info = ft_calloc(sizeof(t_list1), 1);
+	if (info == NULL)
+		return (0);
+	info->length_of_cs_find = 0;
+	info->length_of_cs_string = 0;
+	while (str[info->length_of_cs_string] != '\0')
+	{
+		info->conversion_specifier = ft_find(str, info);
+		va_start(va, str);
+		find_my_purpuse(info, &va, str);
+	}
+	return (info->total_chars_printed);
 }
 
 int     main()
 {
-	const char	pptr[] = "Hello World%010.5d\nHello%s.5\n%x       %0.10X        %lx    ";
-        ft_printf(pptr);
+		const char	pptr[] = "Hello World%010.5dHello%.5s%x  %DX     %0.10X        %lx    \0";
+		//the va does not work
+		//the full string is not printed out
+        ft_printf(pptr, 69, "Hello world", 42, 21, 100, 1);
         return(0);
 }

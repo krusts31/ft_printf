@@ -1,0 +1,22 @@
+So I have to print out the number
+	what are the best ways to do it?
+		1. collect the specifayers and attachtm to a struct and then have a print function.
+		2. just print everytihng as it comes, so I see a minuss print it 15 times do it in a procedural way
+			
+		what the probelm with structs
+			1. alocating memory
+			2. freeing it
+			3. nothing really I guess besides that
+
+		whats the problem oing it with varibles
+			1. function sapce, in therory I can pass it around from function to function and then its not going to be a worry
+			2. 
+
+		going with structs:
+			1. I need to have function for checing the string and then initiaazing the values.
+			2. I need to pass the struct to print functions
+			3. I need to iterait and acces varibles from the struct easaly
+
+
+			!!!		EDGE CASES		!!!
+				I can have a function which will check if the conversion_specifayer is valid and alose print specific out puts if needed! 

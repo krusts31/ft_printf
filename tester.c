@@ -101,7 +101,7 @@ int	main()
 	printf("%d\n", ret);
 	ret = printf("%s%s\n","Whats ","GOOD?");
 	printf("%d\n", ret);
-	ret = printf("%-15d\n", 1234567891);
+	ret = printf("this is ret with 0 in front of a number! %-15d\n", 1234567891);
 	printf("%20d\n", ret);
 	ret = printf("Testing\n");
 	printf("%d\n", ret);
@@ -109,5 +109,15 @@ int	main()
 	printf("%d\n", ret);
 	printf("			Looks like it the amount of chars we printed was the nr\n");
 	printf("%-.*d\n", 20, 1234);
+
+	//19.06
+	printf("What does the \'-\' specifayer do?");
+	printf("The \'-\' specifayer just changes the places we talk about like are we addinf 0 before the nre or after the same with sapces");
+	printf("%d\n", -1234);
+	printf("%.020d\n", 12345);
+	printf("%d-\n", 1234);
+	printf("%-d\n", 1234);
+	printf("%-d\n", -1234);
+	printf("%-d\n", +1234);
 	return (0);
 }

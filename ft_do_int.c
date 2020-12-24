@@ -1,58 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_do_ptr.c                                        :+:    :+:            */
+/*   ft_do_int.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: alkrusts <alkrust@student.codam.nl>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/29 13:55:53 by alkrusts      #+#    #+#                 */
-/*   Updated: 2020/12/06 20:36:29 by alkrusts      ########   odam.nl         */
+/*   Created: 2020/11/16 19:22:09 by alkrusts      #+#    #+#                 */
+/*   Updated: 2020/12/06 20:40:10 by alkrusts      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_continue_ptr(t_list1 *info, va_list va, t_print *print)
+static int	ft_continue_int(t_list1 *info, va_list va, t_print *p)
 {
-	unsigned long 	num;
-	char		*tmp;
+	size_t	num;
 
-	tmp = NULL;
-	num = va_arg(va, unsigned long);
-	print->arg = ft_convert_str_ptr(num);
-	if (print->arg == NULL)
-		return (ft_free_hex(print));
-	if (num != 0)
-		tmp = ft_strjoin("0x", print->arg);
-	if (tmp == NULL && num != 0)
-		return (ft_free_hex(print));
-	if (tmp != NULL)
-		ft_con_ptr(print, tmp);
-	ft_get_pad(print);
-	if (print->s == 0)
-		return (ft_free_hex(print));
-	if (print->arg[0] == '0' && print->d == 0 && print->dot_present)
-		return (ft_hex_zero(print, info));
-	if (print->minuss_present == 0)
-		return (ft_no_minuss(print, info));
-	else
-		return (ft_minuss(print, info));
-	return (ft_free_hex(print));
-}
-
-static int			ft_mid(t_list1 *info, va_list va, t_print *p)
-{
 	if (p->pad_amount >= INT_MAX - 1 || p->pad_amount < INT_MIN + 2)
 		return (ft_free_c(p));
 	if (p->d >= INT_MAX - 1 || p->d < INT_MIN + 2)
 		return (ft_free_c(p));
-	return (ft_continue_ptr(info, va, p));
+	num = va_arg(va, int);
+	p->arg = ft_itoa(num);
+	if (p->arg == NULL)
+		return (ft_free_hex(p));
+	ft_get_pad(p);
+	if (p->s == 0)
+	{
+		ft_free_hex(p);
+		return (0);
+	}
+	if (p->arg[0] == '0' && p->d == 0 && p->dot_present)
+		return (ft_hex_zero(p, info));
+	if (p->minuss_present == 0)
+		return (ft_no_minuss_int(p, info));
+	else
+		return (ft_minuss_int(p, info));
+	return (0);
 }
 
-int			ft_do_ptr(t_list1 *info, va_list va, t_print *print)
+int			ft_do_int(t_list1 *info, va_list va, t_print *print)
 {
 	size_t	index;
-
+ 
 	index = 0;
 	ft_init_print(print);
 	while (info->cs[index] != '\0')
@@ -72,7 +62,7 @@ int			ft_do_ptr(t_list1 *info, va_list va, t_print *print)
 		}
 		index++;
 	}
-	if (!ft_mid(info, va, print))
+	if (!ft_continue_int(info, va, print))
 		return (0);
 	return (1);
 }

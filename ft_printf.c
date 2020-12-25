@@ -53,10 +53,9 @@ static int	find_my_purpuse(t_list1 *info, va_list va)
 	return (1);
 }
 
-static char	*ft_chop(const char *s)
+static void	ft_chop(const char *s, t_list1 *info)
 {
 	int		x;
-	char	*cs;
 
 	x = 0;
 	while (s[x] != '\0')
@@ -64,28 +63,28 @@ static char	*ft_chop(const char *s)
 		x++;
 		if (ft_strchr("cspdiuxX%", s[x]))
 		{
-			cs = ft_calloc(x + 2, sizeof(char));
-			if (cs == NULL)
-				return (NULL);
-			cs = ft_memmove(cs, s, x + 1);
-			return (cs);
+			info->cs = ft_calloc(x + 2, sizeof(char));
+			if (info->cs == NULL)
+				return ;
+			ft_memmove(info->cs, s, x + 1);
 		}
 	}
-	return (NULL);
+	info->cs = NULL;
+	return ;
 }
 
-static char	*ft_find(const char *s, t_list1 *info)
+static void	ft_find(const char *s, t_list1 *info)
 {
 	while (s[info->length_of_cs_string] != '\0')
 	{
 		if (s[info->length_of_cs_string] == '%')
 		{
-			info->cs = ft_chop(&s[info->length_of_cs_string]);
+			ft_chop(&s[info->length_of_cs_string], info);
 			if (info->cs == NULL)
-				return (NULL);
+				return ;
 			info->length_of_cs_string = info->length_of_cs_string +
 				ft_strlen(info->cs);
-			return (info->cs);
+			return ;
 		}
 		else
 		{
@@ -95,8 +94,8 @@ static char	*ft_find(const char *s, t_list1 *info)
 		}
 	}
 	if (s[info->length_of_cs_string] == '\0')
-		return (NULL);
-	return (info->cs);
+		info->cs = NULL;
+	return ;
 }
 
 int			ft_printf(const char *str, ...)
@@ -111,7 +110,7 @@ int			ft_printf(const char *str, ...)
 	info->length_of_cs_string = 0;
 	while (str[info->length_of_cs_string] != '\0')
 	{
-		info->cs = ft_find(str, info);
+		ft_find(str, info);
 		if (info->cs == NULL)
 			return (info->total_chars_printed);
 		if (!find_my_purpuse(info, va))

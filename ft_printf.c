@@ -53,7 +53,7 @@ static int	find_my_purpuse(t_list1 *info, va_list va)
 	return (1);
 }
 
-static void	ft_chop(const char *s, t_list1 *info)
+static int	ft_chop(const char *s, t_list1 *info)
 {
 	int		x;
 
@@ -65,27 +65,26 @@ static void	ft_chop(const char *s, t_list1 *info)
 		{
 			info->cs = ft_calloc(x + 2, sizeof(char));
 			if (info->cs == NULL)
-				return ;
+				return (0);
 			ft_memmove(info->cs, s, x + 1);
-			return ;
+			return (1);
 		}
 	}
 	info->cs = NULL;
-	return ;
+	return (1);
 }
 
-static void	ft_find(const char *s, t_list1 *info)
+static int	ft_find(const char *s, t_list1 *info)
 {
 	while (s[info->length_of_cs_string] != '\0')
 	{
 		if (s[info->length_of_cs_string] == '%')
 		{
-			ft_chop(&s[info->length_of_cs_string], info);
-			if (info->cs == NULL)
-				return ;
+			if (!ft_chop(&s[info->length_of_cs_string], info))
+				return (0);
 			info->length_of_cs_string = info->length_of_cs_string +
 				ft_strlen(info->cs);
-			return ;
+			return (1);
 		}
 		else
 		{
@@ -94,9 +93,7 @@ static void	ft_find(const char *s, t_list1 *info)
 			info->length_of_cs_string = info->length_of_cs_string + 1;
 		}
 	}
-	if (s[info->length_of_cs_string] == '\0')
-		info->cs = NULL;
-	return ;
+	return (1);
 }
 
 int			ft_printf(const char *str, ...)
@@ -111,11 +108,12 @@ int			ft_printf(const char *str, ...)
 	info->length_of_cs_string = 0;
 	while (str[info->length_of_cs_string] != '\0')
 	{
-		ft_find(str, info);
-		if (info->cs == NULL)
-			return (info->total_chars_printed);
+		if (!ft_find(str, info))
+			return (ft_free_in(info, va));
 		if (!find_my_purpuse(info, va))
 			return (ft_free_in(info, va));
+		free (info->cs);
+		info->cs = NULL;
 	}
 	ft_free_in(info, va);
 	return (info->total_chars_printed);

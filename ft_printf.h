@@ -38,6 +38,7 @@ typedef struct	s_list2
 	int		total_chars_printed;
 	int		length_of_cs_string;
 	int		length_of_cs;
+	int		ERROR;
 	char	*cs;
 }				t_list1;
 

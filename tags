@@ -1,0 +1,63 @@
+Mmain	main.c	/^int main(void)$/
+find_my_purpuse	ft_printf.c	/^static int	find_my_purpuse(t_list1 *info, va_list /
+ft_arg	ft_do_char.c	/^static int	ft_arg(t_print *print, int value, char /
+ft_arg_memset	ft_do_char.c	/^static int	ft_arg_memset(t_print *print, char **pa/
+ft_check	ft_utils.c	/^int		ft_check(const char *s, t_list1 *info)$/
+ft_chop	ft_printf.c	/^static int	ft_chop(const char *s, t_list1 *info)$/
+ft_con_dot_no_min	ft_str_utils_1.c	/^static void	ft_con_dot_no_min(t_print *p, long s)$/
+ft_con_ptr	ft_utils_1.c	/^void	ft_con_ptr(t_print *print, char *tmp)$/
+ft_continue_char	ft_do_char.c	/^static int	ft_continue_char(t_list1 *info, va_list/
+ft_continue_helx	ft_do_helx.c	/^static int	ft_continue_helx(t_list1 *info, va_list/
+ft_continue_hex	ft_do_hex.c	/^static int	ft_continue_hex(t_list1 *info, va_list /
+ft_continue_int	ft_do_int.c	/^static int	ft_continue_int(t_list1 *info, va_list /
+ft_continue_precentage	ft_do_prec.c	/^static int	ft_continue_precentage(t_list1 *info, t/
+ft_continue_precentage1	ft_do_prec.c	/^static int	ft_continue_precentage1(t_print *print)/
+ft_continue_ptr	ft_do_ptr.c	/^static int	ft_continue_ptr(t_list1 *info, va_list /
+ft_continue_str	ft_do_str.c	/^static int	ft_continue_str(t_list1 *info, va_list /
+ft_continue_uni	ft_do_uni.c	/^static int	ft_continue_uni(t_list1 *info, va_list /
+ft_convert_str_helx	ft_hex_utils.c	/^char	*ft_convert_str_helx(long integer)$/
+ft_convert_str_hex	ft_hex_utils.c	/^char	*ft_convert_str_hex(long integer)$/
+ft_convert_str_ptr	ft_utils.c	/^char	*ft_convert_str_ptr(unsigned long integer)$/
+ft_cs_dot	ft_utils.c	/^int		ft_cs_dot(t_list1 *f, t_print *p, int i, va_l/
+ft_cs_st	ft_utils.c	/^void	ft_cs_st(t_print *p, va_list va)$/
+ft_do_char	ft_do_char.c	/^int			ft_do_char(t_list1 *info, va_list va, t_prin/
+ft_do_helx	ft_do_helx.c	/^int			ft_do_helx(t_list1 *info, va_list va, t_prin/
+ft_do_hex	ft_do_hex.c	/^int			ft_do_hex(t_list1 *info, va_list va, t_print/
+ft_do_int	ft_do_int.c	/^int			ft_do_int(t_list1 *info, va_list va, t_print/
+ft_do_precentage	ft_do_prec.c	/^int			ft_do_precentage(t_list1 *info, va_list va, /
+ft_do_ptr	ft_do_ptr.c	/^int			ft_do_ptr(t_list1 *info, va_list va, t_print/
+ft_do_str	ft_do_str.c	/^int			ft_do_str(t_list1 *info, va_list va, t_print/
+ft_do_uni	ft_do_uni.c	/^int			ft_do_uni(t_list1 *info, va_list va, t_print/
+ft_find	ft_printf.c	/^static int	ft_find(const char *s, t_list1 *info)$/
+ft_free_c	ft_utils_1.c	/^int		ft_free_c(t_print *print)$/
+ft_free_hex	ft_hex_utils_1.c	/^int	ft_free_hex(t_print *p)$/
+ft_free_in	ft_utils_1.c	/^int		ft_free_in(t_list1 *info, va_list va)$/
+ft_get_pad	ft_hex_utils.c	/^void	ft_get_pad(t_print *print)$/
+ft_get_pad_str	ft_hex_utils.c	/^void	ft_get_pad_str(t_print *print)$/
+ft_hex_zero	ft_do_hex.c	/^int			ft_hex_zero(t_print *print, t_list1 *info)$/
+ft_hexlen	ft_hex_utils.c	/^int		ft_hexlen(long nr)$/
+ft_init_print	ft_utils.c	/^void	ft_init_print(t_print *print)$/
+ft_mid	ft_do_ptr.c	/^static int	ft_mid(t_list1 *info, va_list va, t_pri/
+ft_minuss	ft_do_hex.c	/^int			ft_minuss(t_print *p, t_list1 *f)$/
+ft_minuss_dot	ft_hex_utils_1.c	/^int	ft_minuss_dot(t_print *p, t_list1 *f, long l)$/
+ft_minuss_dot_int	ft_int_utils.c	/^int		ft_minuss_dot_int(t_print *p, t_list1 *f, lon/
+ft_minuss_int	ft_int_utils_1.c	/^int	ft_minuss_int(t_print *p, t_list1 *f)$/
+ft_minuss_no_dot	ft_hex_utils_1.c	/^int	ft_minuss_no_dot(t_print *p, t_list1 *f)$/
+ft_minuss_no_dot_int	ft_int_utils.c	/^int		ft_minuss_no_dot_int(t_print *p, t_list1 *f)$/
+ft_no_minuss	ft_do_hex.c	/^int			ft_no_minuss(t_print *p, t_list1 *f)$/
+ft_no_minuss_dot	ft_hex_utils_1.c	/^int	ft_no_minuss_dot(t_print *p, t_list1 *f)$/
+ft_no_minuss_dot_int	ft_int_utils_1.c	/^int	ft_no_minuss_dot_int(t_print *p, t_list1 *f)$/
+ft_no_minuss_int	ft_int_utils_1.c	/^int	ft_no_minuss_int(t_print *p, t_list1 *f)$/
+ft_no_minuss_no_dot	ft_hex_utils_1.c	/^int	ft_no_minuss_no_dot(t_print *p, t_list1 *f)$/
+ft_no_minuss_no_dot_int	ft_int_utils.c	/^int		ft_no_minuss_no_dot_int(t_print *p, t_list1 */
+ft_print_res	ft_do_char.c	/^static int	ft_print_res(char *pad, char *c, t_list/
+ft_printf	ft_printf.c	/^int			ft_printf(const char *str, ...)$/
+ft_str_dot	ft_str_utils.c	/^int	ft_str_dot(t_print *p, t_list1 *i)$/
+ft_str_dot_minuss	ft_str_utils.c	/^int	ft_str_dot_minuss(t_print *p, t_list1 *i)$/
+ft_str_dot_no_minuss	ft_str_utils_1.c	/^int			ft_str_dot_no_minuss(t_print *p, t_list1 *i)/
+ft_str_no_dot	ft_str_utils.c	/^int	ft_str_no_dot(t_print *p, t_list1 *i)$/
+ft_str_no_dot_minuss	ft_str_utils.c	/^int	ft_str_no_dot_minuss(t_print *p, t_list1 *i)$/
+ft_str_no_dot_no_minuss	ft_str_utils.c	/^int	ft_str_no_dot_no_minuss(t_print *p, t_list1 *i/
+t_function	ft_printf.h	/^}				t_function;$/
+t_list1	ft_printf.h	/^}				t_list1;$/
+t_print	ft_printf.h	/^}				t_print;$/

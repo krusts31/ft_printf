@@ -37,19 +37,24 @@ static int	ft_print_res(char *pad, char *c, t_list1 *info, t_print *print)
 
 static int	ft_arg_memset(t_print *print, char **pad, char **c)
 {
+	char	*tmp;
+
 	if (print->dot_present == 1 && print->pad_amount != 0)
 		ft_memset(*pad, ' ', print->pad_amount - ft_strlen(*c));
 	if (print->zero_present == 1 && print->minuss_present != 1)
 		ft_memset(*pad, '0', print->pad_amount - ft_strlen(*c));
 	if (print->minuss_present == 1)
-		*pad = ft_strjoin(*c, *pad);
+		tmp = ft_strjoin(*c, *pad);
 	else
-		*pad = ft_strjoin(*pad, *c);
-	if (*pad == NULL)
+		tmp = ft_strjoin(*pad, *c);
+	if (pad == NULL)
 	{
+		free(*pad);
 		free(*c);
 		return (ft_free_c(print));
 	}
+	free(*pad);
+	*pad = tmp;
 	return (1);
 }
 

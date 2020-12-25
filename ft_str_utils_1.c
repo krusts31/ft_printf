@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_str_utils_1.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: alkrusts <alkrust@student.codam.nl>          +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/12/25 13:46:14 by alkrusts      #+#    #+#                 */
+/*   Updated: 2020/12/25 13:47:12 by alkrusts      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static void	ft_con_dot_no_min(t_print *p, long s)
@@ -8,13 +20,12 @@ static void	ft_con_dot_no_min(t_print *p, long s)
 			ft_memmove(p->pad + (p->pad_amount - s), p->arg, s);
 		else
 			ft_memmove(p->pad, p->arg, s);
-			
 	}
 	else
 		ft_memmove(p->pad, p->arg, s);
 }
 
-int		ft_str_dot_no_minuss(t_print *p, t_list1 *i)
+int			ft_str_dot_no_minuss(t_print *p, t_list1 *i)
 {
 	long	s;
 

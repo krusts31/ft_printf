@@ -6,7 +6,7 @@
 /*   By: alkrusts <alkrust@student.codam.nl>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/28 17:41:03 by alkrusts      #+#    #+#                 */
-/*   Updated: 2020/12/13 12:46:43 by alkrusts      ########   odam.nl         */
+/*   Updated: 2020/12/25 13:48:42 by alkrusts      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int			ft_printf(const char *str, ...)
 	va_start(va, str);
 	info = ft_calloc(sizeof(t_list1), 1);
 	if (info == NULL)
-		return (0);
+		return (ft_free_in(info, va));
 	info->length_of_cs_string = 0;
 	while (str[info->length_of_cs_string] != '\0')
 	{
@@ -115,13 +115,8 @@ int			ft_printf(const char *str, ...)
 		if (info->cs == NULL)
 			return (info->total_chars_printed);
 		if (!find_my_purpuse(info, va))
-		{
-			free (info->cs);
-			return (-1);
-		}
-		if (info->cs)
-			free(info->cs);
+			return (ft_free_in(info, va));
 	}
-	va_end(va);
+	ft_free_in(info, va);
 	return (info->total_chars_printed);
 }

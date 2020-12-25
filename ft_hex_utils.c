@@ -6,7 +6,7 @@
 /*   By: alkrusts <alkrust@student.codam.nl>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/30 14:55:49 by alkrusts      #+#    #+#                 */
-/*   Updated: 2020/12/13 13:08:51 by alkrusts      ########   odam.nl         */
+/*   Updated: 2020/12/25 13:40:15 by alkrusts      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		ft_hexlen(long nr)
 
 char	*ft_convert_str_hex(long integer)
 {
-	char		*ptr;
+	char	*ptr;
 	int		length_of_integer;
 	long	remainer;
 
@@ -63,7 +63,7 @@ char	*ft_convert_str_hex(long integer)
 
 char	*ft_convert_str_helx(long integer)
 {
-	char		*helx;
+	char	*helx;
 	int		length_of_integer;
 	long	remainer;
 
@@ -111,7 +111,7 @@ void	ft_get_pad(t_print *print)
 void	ft_get_pad_str(t_print *print)
 {
 	if (print->d < 0)
-		print->d = ft_strlen(print->arg); 
+		print->d = ft_strlen(print->arg);
 	if (print->pad_amount < 0)
 		print->pad_amount = -print->pad_amount;
 	if (print->pad_amount >= print->d)

@@ -6,7 +6,7 @@
 /*   By: alkrusts <alkrust@student.codam.nl>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 13:56:05 by alkrusts      #+#    #+#                 */
-/*   Updated: 2020/12/07 21:25:38 by alkrusts      ########   odam.nl         */
+/*   Updated: 2020/12/25 13:37:48 by alkrusts      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_continue_str(t_list1 *info, va_list va, t_print *print)
 		print->arg = ft_strdup(print->arg);
 	if (print->arg == NULL)
 	{
-		free (print);
+		free(print);
 		return (0);
 	}
 	ft_get_pad_str(print);
@@ -29,7 +29,7 @@ static int	ft_continue_str(t_list1 *info, va_list va, t_print *print)
 		return (ft_free_hex(print));
 	if (print->dot_present == 0)
 		return (ft_str_no_dot(print, info));
-	else 
+	else
 		return (ft_str_dot(print, info));
 }
 

@@ -6,13 +6,13 @@
 /*   By: alkrusts <alkrust@student.codam.nl>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/15 12:27:01 by alkrusts      #+#    #+#                 */
-/*   Updated: 2020/12/06 20:39:51 by alkrusts      ########   odam.nl         */
+/*   Updated: 2020/12/25 13:44:37 by alkrusts      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_cs_st(t_print *p, va_list va)
+void	ft_cs_st(t_print *p, va_list va)
 {
 	p->pad_amount = va_arg(va, int);
 	if (p->pad_amount < 0)
@@ -51,8 +51,6 @@ char	*ft_convert_str_ptr(unsigned long integer)
 
 	if (integer == 0)
 		return (ft_strdup("0x0"));
-	if (integer < 0)
-		integer = UINT_MAX + (integer + 1);
 	length_of_integer = ft_hexlen(integer);
 	ptr = ft_calloc(length_of_integer + 1, sizeof(char));
 	if (ptr == NULL)

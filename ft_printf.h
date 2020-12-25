@@ -6,7 +6,7 @@
 /*   By: alkrusts <alkrust@student.codam.nl>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 12:59:16 by alkrusts      #+#    #+#                 */
-/*   Updated: 2020/12/13 13:28:02 by alkrusts      ########   odam.nl         */
+/*   Updated: 2020/12/25 13:45:50 by alkrusts      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char			*ft_convert_str_helx(long integer);
 int				ft_hex_zero(t_print *print, t_list1 *info);
 int				ft_do_hex(t_list1 *info, va_list va, t_print *print);
 int				ft_cs_dot(t_list1 *f, t_print *p, int i, va_list va);
-int			ft_free_hex(t_print *print);
+int				ft_free_hex(t_print *print);
 int				ft_minuss(t_print *p, t_list1 *f);
 int				ft_minuss_no_dot(t_print *p, t_list1 *f);
 int				ft_minuss_dot(t_print *p, t_list1 *f, long l);
@@ -94,4 +94,5 @@ int				ft_minuss_dot_int(t_print *p, t_list1 *f, long l);
 void			ft_cs_st(t_print *p, va_list va);
 void			ft_con_ptr(t_print *print, char *tmp);
 int				ft_free_c(t_print *print);
+int             		ft_free_in(t_list1 *info, va_list va);
 #endif

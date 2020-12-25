@@ -21,6 +21,7 @@ int main(void)
 	unsigned static char	test6 = 'y';
 	unsigned char		test7 = 'l';
 	int	ret;
+/*
 ret =	ft_printf("%c\n", 'x');
 	ft_printf("%d\n", ret);
 ret =	printf("%c\n", 'x');
@@ -69,9 +70,11 @@ ret =	ft_printf("%*c\n", 12, 'x');
 	ft_printf("%d\n", ret);
 ret =	printf("%*c\n", 12, 'x');
 	ft_printf("%d\n", ret);
-ret =	ft_printf("%*c\n", 18, 'x');
-	ft_printf("%d\n", ret);
-ret =	printf("%*c\n", 18, 'x');
+*/
+ret =	printf("%*c done!\nbad: %*c\n", 18, 'x', INT_MAX, 'x');
+	printf("%d\n", ret);
+	printf("****************************\n");
+ret =	ft_printf("%*c done!\nbad: %*c\n", 18, 'x', INT_MAX, 'x');
 	ft_printf("%d\n", ret);
 	return (0);
 }

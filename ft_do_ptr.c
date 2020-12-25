@@ -6,7 +6,7 @@
 /*   By: alkrusts <alkrust@student.codam.nl>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 13:55:53 by alkrusts      #+#    #+#                 */
-/*   Updated: 2020/12/06 20:36:29 by alkrusts      ########   odam.nl         */
+/*   Updated: 2020/12/25 13:50:21 by alkrusts      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	ft_continue_ptr(t_list1 *info, va_list va, t_print *print)
 {
-	unsigned long 	num;
-	char		*tmp;
+	unsigned long	num;
+	char			*tmp;
 
 	tmp = NULL;
 	num = va_arg(va, unsigned long);
@@ -40,7 +40,7 @@ static int	ft_continue_ptr(t_list1 *info, va_list va, t_print *print)
 	return (ft_free_hex(print));
 }
 
-static int			ft_mid(t_list1 *info, va_list va, t_print *p)
+static int	ft_mid(t_list1 *info, va_list va, t_print *p)
 {
 	if (p->pad_amount >= INT_MAX - 1 || p->pad_amount < INT_MIN + 2)
 		return (ft_free_c(p));

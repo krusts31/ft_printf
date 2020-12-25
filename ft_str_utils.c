@@ -6,7 +6,7 @@
 /*   By: alkrusts <alkrust@student.codam.nl>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/07 13:54:52 by alkrusts      #+#    #+#                 */
-/*   Updated: 2020/12/13 13:42:17 by alkrusts      ########   odam.nl         */
+/*   Updated: 2020/12/25 13:49:22 by alkrusts      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_str_dot_minuss(t_print *p, t_list1 *i)
 		s = p->d;
 	else
 		s = (long)ft_strlen(p->arg);
-	ft_memmove(p->pad , p->arg, s);
+	ft_memmove(p->pad, p->arg, s);
 	ft_putstr(p->pad);
 	i->total_chars_printed += ft_strlen(p->pad);
 	ft_free_hex(p);

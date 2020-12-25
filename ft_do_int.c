@@ -6,7 +6,7 @@
 /*   By: alkrusts <alkrust@student.codam.nl>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 19:22:09 by alkrusts      #+#    #+#                 */
-/*   Updated: 2020/12/06 20:40:10 by alkrusts      ########   odam.nl         */
+/*   Updated: 2020/12/25 13:37:00 by alkrusts      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	ft_continue_int(t_list1 *info, va_list va, t_print *p)
 int			ft_do_int(t_list1 *info, va_list va, t_print *print)
 {
 	size_t	index;
- 
+
 	index = 0;
 	ft_init_print(print);
 	while (info->cs[index] != '\0')

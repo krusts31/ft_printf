@@ -6,13 +6,13 @@
 /*   By: alkrusts <alkrust@student.codam.nl>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/30 21:19:52 by alkrusts      #+#    #+#                 */
-/*   Updated: 2020/12/06 20:54:37 by alkrusts      ########   odam.nl         */
+/*   Updated: 2020/12/25 13:51:59 by alkrusts      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_no_minuss_dot(t_print *p, t_list1 *f)
+int	ft_no_minuss_dot(t_print *p, t_list1 *f)
 {
 	long	l;
 
@@ -39,7 +39,7 @@ int		ft_no_minuss_dot(t_print *p, t_list1 *f)
 	return (1);
 }
 
-int		ft_minuss_no_dot(t_print *p, t_list1 *f)
+int	ft_minuss_no_dot(t_print *p, t_list1 *f)
 {
 	if (p->zero_present == 0)
 		ft_memset(p->pad + p->n, ' ', p->pad_amount - p->n);
@@ -54,7 +54,7 @@ int		ft_minuss_no_dot(t_print *p, t_list1 *f)
 	return (1);
 }
 
-int		ft_minuss_dot(t_print *p, t_list1 *f, long l)
+int	ft_minuss_dot(t_print *p, t_list1 *f, long l)
 {
 	if (p->pad_amount > (long)ft_strlen(p->arg) && p->pad_amount > p->d)
 		ft_memset(p->pad + p->n, ' ', p->s - p->n);
@@ -81,7 +81,7 @@ int		ft_minuss_dot(t_print *p, t_list1 *f, long l)
 	return (1);
 }
 
-int		ft_no_minuss_no_dot(t_print *p, t_list1 *f)
+int	ft_no_minuss_no_dot(t_print *p, t_list1 *f)
 {
 	long	l;
 

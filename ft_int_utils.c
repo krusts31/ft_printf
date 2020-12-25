@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_int_utils.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: alkrusts <alkrust@student.codam.nl>          +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/12/25 13:40:52 by alkrusts      #+#    #+#                 */
+/*   Updated: 2020/12/25 13:43:23 by alkrusts      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int		ft_minuss_no_dot_int(t_print *p, t_list1 *f)
@@ -55,7 +67,7 @@ int		ft_no_minuss_no_dot_int(t_print *p, t_list1 *f)
 		if (p->n == 1)
 			ft_memmove(p->pad, "-", 1);
 	}
-	ft_memmove(p->pad + (p->s - l)+ p->n, p->arg + p->n, l - p->n);
+	ft_memmove(p->pad + (p->s - l) + p->n, p->arg + p->n, l - p->n);
 	ft_putstr(p->pad);
 	f->total_chars_printed += ft_strlen(p->pad);
 	ft_free_hex(p);

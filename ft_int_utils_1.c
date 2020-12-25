@@ -6,13 +6,13 @@
 /*   By: alkrusts <alkrust@student.codam.nl>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/06 08:43:32 by alkrusts      #+#    #+#                 */
-/*   Updated: 2020/12/06 21:17:57 by alkrusts      ########   odam.nl         */
+/*   Updated: 2020/12/25 13:51:14 by alkrusts      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_no_minuss_int(t_print *p, t_list1 *f)
+int	ft_no_minuss_int(t_print *p, t_list1 *f)
 {
 	long	len;
 
@@ -39,7 +39,7 @@ int			ft_no_minuss_int(t_print *p, t_list1 *f)
 	return (1);
 }
 
-int			ft_minuss_int(t_print *p, t_list1 *f)
+int	ft_minuss_int(t_print *p, t_list1 *f)
 {
 	long	len;
 
@@ -66,7 +66,7 @@ int			ft_minuss_int(t_print *p, t_list1 *f)
 	return (1);
 }
 
-int		ft_no_minuss_dot_int(t_print *p, t_list1 *f)
+int	ft_no_minuss_dot_int(t_print *p, t_list1 *f)
 {
 	long	l;
 

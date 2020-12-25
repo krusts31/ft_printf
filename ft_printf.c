@@ -67,6 +67,7 @@ static void	ft_chop(const char *s, t_list1 *info)
 			if (info->cs == NULL)
 				return ;
 			ft_memmove(info->cs, s, x + 1);
+			return ;
 		}
 	}
 	info->cs = NULL;

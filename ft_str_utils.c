@@ -16,18 +16,17 @@ int	ft_str_no_dot_minuss(t_print *p, t_list1 *i)
 {
 	long	s;
 
-	s = (long)ft_strlen(p->arg);
-	ft_memmove(p->pad, p->arg, s);
-	ft_putstr(p->pad);
-	i->total_chars_printed += ft_strlen(p->pad);
-	ft_free_hex(p);
+	s = (long)ft_strlen(p->a);
+	ft_memmove(p->p, p->a, s);
+	ft_putstr(p->p);
+	i->total_chars_printed += ft_strlen(p->p);
 	return (1);
 }
 
 int	ft_str_dot(t_print *p, t_list1 *i)
 {
 	if (p->pad_amount != 0)
-		ft_memset(p->pad, ' ', p->pad_amount);
+		ft_memset(p->p, ' ', p->pad_amount);
 	if (p->minuss_present == 1)
 		return (ft_str_dot_minuss(p, i));
 	return (ft_str_dot_no_minuss(p, i));
@@ -36,7 +35,7 @@ int	ft_str_dot(t_print *p, t_list1 *i)
 int	ft_str_no_dot(t_print *p, t_list1 *i)
 {
 	if (p->pad_amount != 0)
-		ft_memset(p->pad, ' ', p->pad_amount);
+		ft_memset(p->p, ' ', p->pad_amount);
 	if (p->minuss_present == 1)
 		return (ft_str_no_dot_minuss(p, i));
 	return (ft_str_no_dot_no_minuss(p, i));
@@ -46,14 +45,13 @@ int	ft_str_dot_minuss(t_print *p, t_list1 *i)
 {
 	long	s;
 
-	if (((long)ft_strlen(p->arg) - p->d) >= 0)
+	if (((long)ft_strlen(p->a) - p->d) >= 0)
 		s = p->d;
 	else
-		s = (long)ft_strlen(p->arg);
-	ft_memmove(p->pad, p->arg, s);
-	ft_putstr(p->pad);
-	i->total_chars_printed += ft_strlen(p->pad);
-	ft_free_hex(p);
+		s = (long)ft_strlen(p->a);
+	ft_memmove(p->p, p->a, s);
+	ft_putstr(p->p);
+	i->total_chars_printed += ft_strlen(p->p);
 	return (1);
 }
 
@@ -61,13 +59,12 @@ int	ft_str_no_dot_no_minuss(t_print *p, t_list1 *i)
 {
 	long	s;
 
-	s = (long)ft_strlen(p->arg);
+	s = (long)ft_strlen(p->a);
 	if (p->pad_amount - s > 0)
-		ft_memmove(p->pad + (p->pad_amount - s), p->arg, s);
+		ft_memmove(p->p + (p->pad_amount - s), p->a, s);
 	else
-		ft_memmove(p->pad, p->arg, s);
-	ft_putstr(p->pad);
-	i->total_chars_printed += ft_strlen(p->pad);
-	ft_free_hex(p);
+		ft_memmove(p->p, p->a, s);
+	ft_putstr(p->p);
+	i->total_chars_printed += ft_strlen(p->p);
 	return (1);
 }

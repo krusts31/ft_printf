@@ -28,8 +28,8 @@ typedef struct	s_list3
 	int		st;
 	long	d;
 	long	pad_amount;
-	char	*arg;
-	char	*pad;
+	char	*a;
+	char	*p;
 	size_t	s;
 }				t_print;
 
@@ -38,7 +38,6 @@ typedef struct	s_list2
 	int		total_chars_printed;
 	int		length_of_cs_string;
 	int		length_of_cs;
-	int		ERROR;
 	char	*cs;
 }				t_list1;
 
@@ -67,7 +66,7 @@ char			*ft_convert_str_helx(long integer);
 int				ft_hex_zero(t_print *print, t_list1 *info);
 int				ft_do_hex(t_list1 *info, va_list va, t_print *print);
 int				ft_cs_dot(t_list1 *f, t_print *p, int i, va_list va);
-int				ft_free_hex(t_print *print);
+int				ft_free_print(t_print *print);
 int				ft_minuss(t_print *p, t_list1 *f);
 int				ft_minuss_no_dot(t_print *p, t_list1 *f);
 int				ft_minuss_dot(t_print *p, t_list1 *f, long l);
@@ -94,6 +93,7 @@ int				ft_no_minuss_no_dot_int(t_print *p, t_list1 *f);
 int				ft_minuss_dot_int(t_print *p, t_list1 *f, long l);
 void			ft_cs_st(t_print *p, va_list va);
 void			ft_con_ptr(t_print *print, char *tmp);
-int				ft_free_c(t_print *print);
-int             		ft_free_in(t_list1 *info, va_list va);
+int             		ft_free_in(t_list1 *info, va_list va, t_print *p);
+void			ft_get_pad_char(t_print *p);
+void			ft_init_info(t_list1 *info);
 #endif

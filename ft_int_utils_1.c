@@ -16,26 +16,24 @@ int	ft_no_minuss_int(t_print *p, t_list1 *f)
 {
 	long	len;
 
-	len = ft_strlen(p->arg);
+	len = ft_strlen(p->a);
 	if (p->dot_present == 1)
 		return (ft_no_minuss_dot_int(p, f));
 	if (p->dot_present == 0)
 		return (ft_no_minuss_no_dot_int(p, f));
 	if (len > p->pad_amount)
 	{
-		ft_putstr(p->arg);
+		ft_putstr(p->a);
 		f->total_chars_printed += len;
-		ft_free_hex(p);
 		return (1);
 	}
 	if (p->zero_present == 1 && p->pad_amount > len)
 	{
-		ft_memset(p->pad, '0', p->s - len);
-		ft_memmove(p->pad + (p->s - len), p->arg, len);
-		ft_putstr(p->pad);
+		ft_memset(p->p, '0', p->s - len);
+		ft_memmove(p->p + (p->s - len), p->a, len);
+		ft_putstr(p->p);
 		f->total_chars_printed += len;
 	}
-	ft_free_hex(p);
 	return (1);
 }
 
@@ -43,25 +41,23 @@ int	ft_minuss_int(t_print *p, t_list1 *f)
 {
 	long	len;
 
-	len = ft_strlen(p->arg);
+	len = ft_strlen(p->a);
 	if (p->d != 0)
 		return (ft_minuss_dot_int(p, f, len));
 	if (p->d == 0)
 		return (ft_minuss_no_dot_int(p, f));
 	if ((long)len > p->pad_amount)
 	{
-		ft_putstr(p->arg);
+		ft_putstr(p->a);
 		f->total_chars_printed += len;
-		ft_free_hex(p);
 		return (1);
 	}
 	if (p->zero_present == 1 && p->pad_amount > (long)len)
 	{
-		ft_memset(p->pad + (p->s - len), '0', p->s - len);
-		ft_memmove(p->pad, p->arg, len);
-		ft_putstr(p->pad);
-		f->total_chars_printed += ft_strlen(p->pad);
-		ft_free_hex(p);
+		ft_memset(p->p + (p->s - len), '0', p->s - len);
+		ft_memmove(p->p, p->a, len);
+		ft_putstr(p->p);
+		f->total_chars_printed += ft_strlen(p->p);
 	}
 	return (1);
 }
@@ -70,25 +66,24 @@ int	ft_no_minuss_dot_int(t_print *p, t_list1 *f)
 {
 	long	l;
 
-	l = (long)ft_strlen(p->arg);
-	if (p->pad_amount > (long)ft_strlen(p->arg) && p->pad_amount > p->d)
-		ft_memset(p->pad, ' ', p->s);
-	if ((long)ft_strlen(p->arg) <= p->d)
+	l = (long)ft_strlen(p->a);
+	if (p->pad_amount > (long)ft_strlen(p->a) && p->pad_amount > p->d)
+		ft_memset(p->p, ' ', p->s);
+	if ((long)ft_strlen(p->a) <= p->d)
 	{
-		ft_memset(p->pad + (p->s - p->d), '0', (p->d));
+		ft_memset(p->p + (p->s - p->d), '0', (p->d));
 		if (p->n == 1 && p->s - p->d != 0)
-			ft_memmove(p->pad + ((p->s - p->d) - p->n), "-", 1);
+			ft_memmove(p->p + ((p->s - p->d) - p->n), "-", 1);
 		if (p->n == 1 && p->s - p->d == 0)
-			ft_memmove(p->pad + (p->s - p->d), "-", 1);
+			ft_memmove(p->p + (p->s - p->d), "-", 1);
 		if (p->pad_amount <= p->d)
-			ft_memmove(p->pad + (p->s - (l - p->n)) + p->n, p->arg + p->n, l - p->n);
+			ft_memmove(p->p + (p->s - (l - p->n)) + p->n, p->a + p->n, l - p->n);
 		if (p->pad_amount > p->d)
-			ft_memmove(p->pad + (p->s - (l - p->n)), p->arg + p->n, l - p->n);
+			ft_memmove(p->p + (p->s - (l - p->n)), p->a + p->n, l - p->n);
 	}
 	else
-		ft_memmove(p->pad + (p->s - l), p->arg, l);
-	ft_putstr(p->pad);
-	f->total_chars_printed += ft_strlen(p->pad);
-	ft_free_hex(p);
+		ft_memmove(p->p + (p->s - l), p->a, l);
+	ft_putstr(p->p);
+	f->total_chars_printed += ft_strlen(p->p);
 	return (1);
 }

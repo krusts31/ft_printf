@@ -88,42 +88,42 @@ char	*ft_convert_str_helx(long integer)
 	return (helx);
 }
 
-void	ft_get_pad(t_print *print)
+void	ft_get_pad(t_print *p)
 {
-	if (print->arg[0] == '-')
-		print->n = 1;
-	if (print->pad_amount < 0)
-		print->pad_amount = -print->pad_amount;
-	if (print->pad_amount >= print->d)
-		print->s = print->pad_amount;
-	if (print->pad_amount <= print->d)
-		print->s = print->d;
-	if (print->s <= ft_strlen(print->arg))
-		print->s = ft_strlen(print->arg);
-	if (print->n == 1)
-		print->pad = ft_calloc(print->s + 2, sizeof(char));
+	if (p->a[0] == '-')
+		p->n = 1;
+	if (p->pad_amount < 0)
+		p->pad_amount = -p->pad_amount;
+	if (p->pad_amount >= p->d)
+		p->s = p->pad_amount;
+	if (p->pad_amount <= p->d)
+		p->s = p->d;
+	if (p->s <= ft_strlen(p->a))
+		p->s = ft_strlen(p->a);
+	if (p->n == 1)
+		p->p = ft_calloc(p->s + 2, sizeof(char));
 	else
-		print->pad = ft_calloc(print->s + 1, sizeof(char));
-	if (print->pad == NULL)
-		print->s = 0;
+		p->p = ft_calloc(p->s + 1, sizeof(char));
+	if (p->p == NULL)
+		p->s = 0;
 }
 
-void	ft_get_pad_str(t_print *print)
+void	ft_get_pad_str(t_print *p)
 {
-	if (print->d < 0)
-		print->d = ft_strlen(print->arg);
-	if (print->pad_amount < 0)
-		print->pad_amount = -print->pad_amount;
-	if (print->pad_amount >= print->d)
-		print->s = print->pad_amount;
-	if (print->pad_amount <= print->d)
-		print->s = print->d;
-	if (print->s <= ft_strlen(print->arg))
-		print->s = ft_strlen(print->arg) + 1;
-	if (print->n == 1)
-		print->pad = ft_calloc(print->s + 2, sizeof(char));
+	if (p->d < 0)
+		p->d = ft_strlen(p->a);
+	if (p->pad_amount < 0)
+		p->pad_amount = -p->pad_amount;
+	if (p->pad_amount >= p->d)
+		p->s = p->pad_amount;
+	if (p->pad_amount <= p->d)
+		p->s = p->d;
+	if (p->s <= ft_strlen(p->a))
+		p->s = ft_strlen(p->a) + 1;
+	if (p->n == 1)
+		p->p = ft_calloc(p->s + 2, sizeof(char));
 	else
-		print->pad = ft_calloc(print->s + 1, sizeof(char));
-	if (print->pad == NULL)
-		print->s = 0;
+		p->p = ft_calloc(p->s + 1, sizeof(char));
+	if (p->p == NULL)
+		p->s = 0;
 }

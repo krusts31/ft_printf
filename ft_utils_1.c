@@ -12,23 +12,48 @@
 
 #include "ft_printf.h"
 
-int		ft_free_c(t_print *print)
+int		ft_free_c(t_print *p)
 {
-	free(print);
+	free(p);
 	return (0);
 }
 
-void	ft_con_ptr(t_print *print, char *tmp)
+void	ft_con_ptr(t_print *p, char *tmp)
 {
-	free(print->arg);
-	print->arg = tmp;
+	free(p->a);
+	p->a = tmp;
 }
 
-int		ft_free_in(t_list1 *info, va_list va)
+int		ft_free_in(t_list1 *info, va_list va, t_print *p)
 {
 	va_end(va);
 	if (info != NULL)
 		free(info->cs);
 	free(info);
+	if (p != NULL)
+	{
+		free(p->p);
+		free(p->a);
+	}
+	free(p);
 	return (-1);
+}
+
+void	ft_get_pad_char(t_print *p)
+{
+	if (p->pad_amount < 0)
+		p->pad_amount = -p->pad_amount;
+	p->s = 1;
+	if (p->s < (size_t)p->pad_amount)
+		p->s = p->pad_amount;
+	p->p = ft_calloc(p->s + 1, sizeof(char));
+	if (p->p == NULL)
+		p->s = 0;
+}
+
+void	ft_init_info(t_list1* info)
+{
+	info->cs = NULL;
+	info->length_of_cs_string = 0;
+	info->total_chars_printed = 0;
 }

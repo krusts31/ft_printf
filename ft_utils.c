@@ -98,8 +98,8 @@ int		ft_check(const char *s, t_list1 *info)
 
 void	ft_init_print(t_print *print)
 {
-	print->pad = "\0";
-	print->arg = NULL;
+	print->p = NULL;
+	print->a = NULL;
 	print->s = 0;
 	print->minuss_present = 0;
 	print->zero_present = 0;

@@ -12,67 +12,67 @@
 
 #include "ft_printf.h"
 
-static int	ft_continue_ptr(t_list1 *info, va_list va, t_print *print)
+static int	ft_continue_ptr(t_list1 *info, va_list va, t_print *p)
 {
 	unsigned long	num;
 	char			*tmp;
 
 	tmp = NULL;
 	num = va_arg(va, unsigned long);
-	print->arg = ft_convert_str_ptr(num);
-	if (print->arg == NULL)
-		return (ft_free_hex(print));
+	p->a = ft_convert_str_ptr(num);
+	if (p->a == NULL)
+		return (0);
 	if (num != 0)
-		tmp = ft_strjoin("0x", print->arg);
+		tmp = ft_strjoin("0x", p->a);
 	if (tmp == NULL && num != 0)
-		return (ft_free_hex(print));
+		return (0);
 	if (tmp != NULL)
-		ft_con_ptr(print, tmp);
-	ft_get_pad(print);
-	if (print->s == 0)
-		return (ft_free_hex(print));
-	if (print->arg[0] == '0' && print->d == 0 && print->dot_present)
-		return (ft_hex_zero(print, info));
-	if (print->minuss_present == 0)
-		return (ft_no_minuss(print, info));
+		ft_con_ptr(p, tmp);
+	ft_get_pad(p);
+	if (p->s == 0)
+		return (0);
+	if (p->a[0] == '0' && p->d == 0 && p->dot_present)
+		return (ft_hex_zero(p, info));
+	if (p->minuss_present == 0)
+		return (ft_no_minuss(p, info));
 	else
-		return (ft_minuss(print, info));
-	return (ft_free_hex(print));
+		return (ft_minuss(p, info));
+	return (0);
 }
 
 static int	ft_mid(t_list1 *info, va_list va, t_print *p)
 {
 	if (p->pad_amount >= INT_MAX - 1 || p->pad_amount < INT_MIN + 2)
-		return (ft_free_c(p));
+		return (0);
 	if (p->d >= INT_MAX - 1 || p->d < INT_MIN + 2)
-		return (ft_free_c(p));
+		return (0);
 	return (ft_continue_ptr(info, va, p));
 }
 
-int			ft_do_ptr(t_list1 *info, va_list va, t_print *print)
+int			ft_do_ptr(t_list1 *info, va_list va, t_print *p)
 {
 	size_t	index;
 
 	index = 0;
-	ft_init_print(print);
+	ft_init_print(p);
 	while (info->cs[index] != '\0')
 	{
 		if (info->cs[index] == '-')
-			print->minuss_present = 1;
+			p->minuss_present = 1;
 		if (info->cs[index] == '0')
-			print->zero_present = 1;
+			p->zero_present = 1;
 		if (info->cs[index] == '.')
-			index = ft_cs_dot(info, print, index, va);
+			index = ft_cs_dot(info, p, index, va);
 		if (info->cs[index] == '*')
-			ft_cs_st(print, va);
+			ft_cs_st(p, va);
 		if (info->cs[index] > '0' && info->cs[index] <= '9')
 		{
-			print->pad_amount = ft_atoi(info->cs + index);
-			index += (ft_intlen(print->pad_amount) - 1);
+			p->pad_amount = ft_atoi(info->cs + index);
+			index += (ft_intlen(p->pad_amount) - 1);
 		}
 		index++;
 	}
-	if (!ft_mid(info, va, print))
+	if (!ft_mid(info, va, p))
 		return (0);
 	return (1);
 }

@@ -25,13 +25,13 @@ t_function g_var[10] = {
 	{'\0', NULL}
 };
 
-static int	find_my_purpuse(t_list1 *info, va_list va, t_print *print)
+static int	find_my_purpuse(t_list1 *info, va_list va, t_print **print)
 {
 	int		i;
 
 	info->length_of_cs = 0;
-	print = ft_calloc(sizeof(t_print), 1);
-	if (print == NULL)
+	*print = ft_calloc(sizeof(t_print), 1);
+	if (*print == NULL)
 		return (0);
 	while (info->cs[info->length_of_cs] != '\0')
 	{
@@ -41,7 +41,7 @@ static int	find_my_purpuse(t_list1 *info, va_list va, t_print *print)
 		{
 			if (g_var[i].c == info->cs[info->length_of_cs])
 			{
-				if (!g_var[i].f(info, va, print))
+				if (!g_var[i].f(info, va, *print))
 					return (0);
 				return (1);
 			}
@@ -112,11 +112,12 @@ int			ft_printf(const char *str, ...)
 			return (ft_free_in(info, va, print));
 		if (info->cs != NULL)
 		{
-			if (!find_my_purpuse(info, va, print))
+			if (!find_my_purpuse(info, va, &print))
 				return (ft_free_in(info, va, print));
 			free(info->cs);
 			info->cs = NULL;
 			ft_free_print(print);
+			print = NULL;
 		}
 	}
 	ret = info->total_chars_printed;

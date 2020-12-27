@@ -17,16 +17,16 @@ static int	ft_continue_int(t_list1 *info, va_list va, t_print *p)
 	long	num;
 
 	if (p->pad_amount >= INT_MAX - 1 || p->pad_amount < INT_MIN + 2)
-		return (ft_free_print(p));
+		return (0);
 	if (p->d >= INT_MAX - 1 || p->d < INT_MIN + 2)
-		return (ft_free_print(p));
+		return (0);
 	num = va_arg(va, int);
 	p->a = ft_itoa(num);
 	if (p->a == NULL)
-		return (ft_free_print(p));
+		return (0);
 	ft_get_pad(p);
 	if (p->s == 0)
-		return (ft_free_print(p));
+		return (0);
 	if (p->a[0] == '0' && p->d == 0 && p->dot_present)
 		return (ft_hex_zero(p, info));
 	if (p->minuss_present == 0)

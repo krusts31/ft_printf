@@ -12,12 +12,6 @@
 
 #include "ft_printf.h"
 
-int		ft_free_c(t_print *p)
-{
-	free(p);
-	return (0);
-}
-
 void	ft_con_ptr(t_print *p, char *tmp)
 {
 	free(p->a);

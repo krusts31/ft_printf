@@ -103,15 +103,13 @@ int	ft_no_minuss_no_dot(t_print *p, t_list1 *f)
 	return (1);
 }
 
-int	ft_free_print(t_print *p)
+int	ft_free_print(t_print *pi)
 {
-	if (p != NULL)
+	if (pi != NULL)
 	{
-		free(p->p);
-		free(p->a);
-		p->p = NULL;
-		p->a = NULL;
+		free(pi->p);
+		free(pi->a);
 	}
-	free(p);
+	free(pi);
 	return (0);
 }

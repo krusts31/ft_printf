@@ -47,19 +47,19 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar rcs $@ $^
+	ar rcs $@ $^
 
 bonus:
 	$(MAKE) WITH_BONUS=1 all
 
 %.o: %.c $(HEADER)
-	@$(CC) -c $(CFLAGS) -o $@ $<
+	$(CC) -c $(CFLAGS) -o $@ $< 
 
 clean:
-	@/bin/rm -f $(SRC_OBJ) $(BONUS_OBJ)
+	/bin/rm -f $(SRC_OBJ) $(BONUS_OBJ)
 
 fclean: clean
-	@/bin/rm -f  $(NAME)
+	/bin/rm -f  $(NAME)
 
 re: fclean all
 

@@ -1,5 +1,4 @@
 Mmain	main.c	/^int main(void)$/
-Mtest	test.c	/^int main(void)$/
 find_my_purpuse	ft_printf.c	/^static int	find_my_purpuse(t_list1 *info, va_list /
 ft_arg	ft_do_char.c	/^static int	ft_arg(t_print *p, int value)$/
 ft_arg_memset	ft_do_char.c	/^static int	ft_arg_memset(t_print *p)$/
@@ -30,14 +29,14 @@ ft_do_ptr	ft_do_ptr.c	/^int			ft_do_ptr(t_list1 *info, va_list va, t_print/
 ft_do_str	ft_do_str.c	/^int			ft_do_str(t_list1 *info, va_list va, t_print/
 ft_do_uni	ft_do_uni.c	/^int			ft_do_uni(t_list1 *info, va_list va, t_print/
 ft_find	ft_printf.c	/^static int	ft_find(const char *s, t_list1 *info)$/
-ft_free_c	ft_utils_1.c	/^int		ft_free_c(t_print *p)$/
 ft_free_in	ft_utils_1.c	/^int		ft_free_in(t_list1 *info, va_list va, t_print/
-ft_free_print	ft_hex_utils_1.c	/^int	ft_free_print(t_print *p)$/
+ft_free_print	ft_hex_utils_1.c	/^int	ft_free_print(t_print *pi)$/
 ft_get_pad	ft_hex_utils.c	/^void	ft_get_pad(t_print *p)$/
 ft_get_pad_char	ft_utils_1.c	/^void	ft_get_pad_char(t_print *p)$/
 ft_get_pad_str	ft_hex_utils.c	/^void	ft_get_pad_str(t_print *p)$/
 ft_hex_zero	ft_do_hex.c	/^int			ft_hex_zero(t_print *p, t_list1 *info)$/
 ft_hexlen	ft_hex_utils.c	/^int		ft_hexlen(long nr)$/
+ft_init_info	ft_utils_1.c	/^void	ft_init_info(t_list1* info)$/
 ft_init_print	ft_utils.c	/^void	ft_init_print(t_print *print)$/
 ft_mid	ft_do_ptr.c	/^static int	ft_mid(t_list1 *info, va_list va, t_pri/
 ft_minuss	ft_do_hex.c	/^int			ft_minuss(t_print *p, t_list1 *f)$/
@@ -60,8 +59,8 @@ ft_str_dot_no_minuss	ft_str_utils_1.c	/^int			ft_str_dot_no_minuss(t_print *p, t
 ft_str_no_dot	ft_str_utils.c	/^int	ft_str_no_dot(t_print *p, t_list1 *i)$/
 ft_str_no_dot_minuss	ft_str_utils.c	/^int	ft_str_no_dot_minuss(t_print *p, t_list1 *i)$/
 ft_str_no_dot_no_minuss	ft_str_utils.c	/^int	ft_str_no_dot_no_minuss(t_print *p, t_list1 *i/
-p	ft_int_utils.o	/^Οϊνώ/
 q	ft_int_utils_1.o	/^/
 t_function	ft_printf.h	/^}				t_function;$/
 t_list1	ft_printf.h	/^}				t_list1;$/
 t_print	ft_printf.h	/^}				t_print;$/
+x	libftprintf.a	/^/

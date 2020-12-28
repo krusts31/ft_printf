@@ -28,7 +28,6 @@ t_function g_var[10] = {
 static int	find_my_purpuse(t_list1 *info, va_list va, t_print **print)
 {
 	int		i;
-
 	info->length_of_cs = 0;
 	*print = ft_calloc(sizeof(t_print), 1);
 	if (*print == NULL)

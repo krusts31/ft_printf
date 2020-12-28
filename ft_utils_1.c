@@ -51,3 +51,26 @@ void	ft_init_info(t_list1* info)
 	info->length_of_cs_string = 0;
 	info->total_chars_printed = 0;
 }
+
+int	ft_edge(t_list1 *info, t_print *p)
+{
+	if (p->pad_amount != 0)
+		ft_memset(p->p, ' ', p->pad_amount - 1);
+	if (p->zero_present == 1 && p->minuss_present != 1)
+	{
+		if (p->pad_amount != 0)
+			ft_memset(p->p, '0', p->pad_amount - 1);
+	}
+	if (p->minuss_present == 1)
+	{
+		write(1, "\0", 1);
+		ft_putstr(p->p);
+	}
+	else
+	{
+		ft_putstr(p->p);
+		write(1, "\0", 1);
+	}
+	info->total_chars_printed += ft_strlen(p->p) + 1;
+	return (1);
+}

@@ -15,7 +15,6 @@ CFLAGS = -Wall -Werror -Wextra
 HEADER = ft_printf.h
 LIB = -L libft/ -lft
 
-
 SRC = ft_printf.c ft_do_char.c ft_do_helx.c ft_do_hex.c ft_do_ptr.c \
 		ft_do_str.c ft_do_uni.c ft_do_prec.c ft_utils.c ft_do_int.c \
 		ft_hex_utils.c ft_hex_utils_1.c ft_str_utils.c \
@@ -26,15 +25,16 @@ SRC_OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME) : $(SRC_OBJ)
-	@make -C libft
-	@ar rcs $@ $^
+$(NAME): $(SRC_OBJ)
+	make -C libft
+	cp libft/libft.a ./libftprintf.a
+	ar rcs $@ $^
 
-%.o : %.c $(HEADER) 
-	@$(CC) -c $(CFLAGS) $< -o $@ -g
+%.o: %.c $(HEADER) 
+	$(CC) -c $(CFLAGS) $< -o $@ -g 
 
 do:
-	gcc -g -o a.out main.c -L . -lftprintf -L libft -lft
+	gcc -g -o a.out main.c -L . -lftprintf
 
 clean:
 	make clean -C libft 

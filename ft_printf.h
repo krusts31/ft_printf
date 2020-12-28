@@ -96,4 +96,5 @@ void			ft_con_ptr(t_print *print, char *tmp);
 int             		ft_free_in(t_list1 *info, va_list va, t_print *p);
 void			ft_get_pad_char(t_print *p);
 void			ft_init_info(t_list1 *info);
+int				ft_edge(t_list1 *info, t_print *p);
 #endif

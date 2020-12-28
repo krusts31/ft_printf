@@ -31,7 +31,7 @@ static int	ft_arg_memset(t_print *p)
 {
 	char	*tmp;
 
-	if (p->dot_present == 1 && p->pad_amount != 0)
+	if (p->pad_amount != 0)
 		ft_memset(p->p, ' ', p->pad_amount - ft_strlen(p->a));
 	if (p->zero_present == 1 && p->minuss_present != 1)
 		ft_memset(p->p, '0', p->pad_amount - ft_strlen(p->a));
@@ -48,10 +48,15 @@ static int	ft_arg_memset(t_print *p)
 
 static int	ft_arg(t_print *p, int value)
 {
-	p->a = ft_calloc(2, sizeof(char));
+	if (value == 0)
+		p->a = ft_calloc(1, sizeof(char));
+	else
+	{
+		p->a = ft_calloc(2, sizeof(char));
+		p->a[0] = (char)value;
+	}
 	if (p->a == NULL)
 		return (0);
-	p->a[0] = (char)value;
 	if (p->pad_amount > (long)ft_strlen(p->a))
 		ft_memset(p->p, ' ', p->pad_amount - ft_strlen(p->a));
 	return (ft_arg_memset(p));
@@ -64,13 +69,9 @@ static int	ft_continue_char(t_list1 *info, va_list va, t_print *p)
 	if (p->pad_amount >= INT_MAX - 1 || p->pad_amount < INT_MIN + 2)
 		return (0);
 	value = va_arg(va, int);
-	if (value == 0)
-	{
-		write(1, "", 1);
-		info->total_chars_printed += 1;
-		return (1);
-	}
 	ft_get_pad_char(p);
+	if (value == 0)
+		return (ft_edge(info, p));
 	if (p->s == 0)
 		return (0);
 	if (!ft_arg(p, value))

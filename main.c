@@ -232,4 +232,5 @@ ret =	ft_printf("neg10 %*.*d\n", -15586, 15, 150);
 ret =	ft_printf("neg11 %*.*d\n", -15586, 15, 0);
 ret =	ft_printf("***************%*s%*d**************%*u*************", 10, "coucou", 10, 10, -50, 20);
 ret =	ft_printf("taaa %100s\n", "hello");
+	ft_printf("|%5c|\n", '\0');
 }
